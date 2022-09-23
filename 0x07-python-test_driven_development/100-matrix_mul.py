@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 
-'''Handling the multiplication of 2 matrices'''
+"""
+This module contains a function that multiplies 2 matrices
+"""
 
 
 def matrix_mul(m_a, m_b):
-    '''Method that multiplies two matrices
+    """This function multiplies two matrices
     Args:
         m_a (list of lists of int/float): Matrix to be multiplied
         m_b (list of lists of int/float): Matrix to be multiplied
@@ -15,9 +17,9 @@ def matrix_mul(m_a, m_b):
         TypeError: If row of m_a or m_b are not the same size
         ValueError: If m_a or m_b is empty
         ValueError: If m_a and m_b cannot be multiplied
-    Returns:
-        A new list after multiplication
-    '''
+Returns:
+        A new list which is the outcome of the multiplication
+    """
 
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
@@ -49,21 +51,20 @@ def matrix_mul(m_a, m_b):
     if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
-    mat_a_b = []
-    for r in range(len(m_b[0])):
-        new_row = []
-        for n in range(len(m_b)):
-            new_row.append(m_b[n][r])
-        mat_a_b.append(new_row)
+    matrix1 = []
+    for i in range(len(m_b[0])):
+        my_row = []
+        for j in range(len(m_b)):
+            my_row.append(m_b[j][i])
+        matrix1.append(my_row)
 
-    new_matrix = []
+    matrix2 = []
     for row in m_a:
-        new_row = []
-        for col in mat_a_b:
-            mul = 0
-            for m in range(len(mat_a_b[0])):
-                mul += row[m] * col[m]
-            new_row.append(mul)
-        new_matrix.append(new_row)
-
-    return 
+        my_row = []
+        for column in matrix1:
+            product = 0
+            for m in range(len(matrix1[0])):
+                product += row[m] * column[m]
+            my_row.append(product)
+        matrix2.append(my_row)
+return matrix2 
