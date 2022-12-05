@@ -7,7 +7,7 @@ import MySQLdb
 if __name__ == '__main__':
     conn = MySQLdb.connect(port=3306, user=argv[1], passwd=argv[2], db=argv[3])
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE name = '" + (argv[4]) +"' order by states.id")
+    cur.execute("SELECT * FROM states WHERE name like binary '{}' order by states.id asc".format(argv[4]))
     states = cur.fetchall()
     for state in states:
         print(state)
