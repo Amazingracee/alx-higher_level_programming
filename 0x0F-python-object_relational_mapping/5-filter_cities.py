@@ -8,7 +8,8 @@ if __name__ == '__main__':
     cur = conn.cursor()
     cur.execute("SELECT cities.name FROM cities JOIN states ON\
             states.id = cities.state_id WHERE\
-            states.name LIKE '%s'" % (argv[4]))
+            states.name = %(state_name)s ORDER\
+            BY cities.id ASC", {'state_name': argv[4]})
     cities = cur.fetchall()
     lists = []
     for city in cities:
